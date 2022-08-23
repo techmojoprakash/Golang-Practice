@@ -15,7 +15,7 @@
 //* The area of a rectangle is length*width
 //* The perimeter of a rectangle is the sum of the lengths of all sides
 
-package main
+// package main
 
 type Rectangle struct {
 	lengthX int

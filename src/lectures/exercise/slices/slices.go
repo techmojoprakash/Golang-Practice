@@ -16,7 +16,11 @@ package main
 
 import "fmt"
 
-type Part string
+// type Part string
 
 func main() {
+	MySlice := []string{"tom", "cat", "rat", "fat", "sweety"}
+	MySlice = append(MySlice, "meow")
+	fmt.Println(MySlice)
+	fmt.Println(MySlice[2])
 }
