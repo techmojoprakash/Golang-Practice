@@ -14,8 +14,8 @@ type bus struct {
 
 func main() {
 	fmt.Println("Welcome to bus program")
-	vinay := Passenger{"vinay", 12345, true}
-	myBus := bus{vinay}
+	p1 := Passenger{"vinay", 12345, true}
+	myBus := bus{p1}
 	fmt.Println("Front Passenger name is : ", myBus.FrontPassenger.name)
 
 	var (
@@ -24,7 +24,7 @@ func main() {
 		srikanth = Passenger{"srikanth", 12348, false}
 	)
 
-	fmt.Println("all passenger names are", vinay.name, chandu.name, anurag.name, srikanth.name)
+	fmt.Println("all passenger names are", p1.name, chandu.name, anurag.name, srikanth.name)
 
 	// board one passenger
 	chandu.boarded = true
