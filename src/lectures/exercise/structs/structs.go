@@ -1,21 +1,21 @@
-//--Summary:
-//  Create a program to calculate the area and perimeter
-//  of a rectangle.
+// --Summary:
 //
-//--Requirements:
-//* Create a rectangle structure containing its coordinates
-//* Using functions, calculate the area and perimeter of a rectangle,
-//  - Print the results to the terminal
-//  - The functions must use the rectangle structure as the function parameter
-//* After performing the above requirements, double the size
-//  of the existing rectangle and repeat the calculations
-//  - Print the new results to the terminal
+//	Create a program to calculate the area and perimeter
+//	of a rectangle.
 //
-//--Notes:
-//* The area of a rectangle is length*width
-//* The perimeter of a rectangle is the sum of the lengths of all sides
-
-// package main
+// --Requirements:
+// * Create a rectangle structure containing its coordinates
+// * Using functions, calculate the area and perimeter of a rectangle,
+//   - Print the results to the terminal
+//   - The functions must use the rectangle structure as the function parameter
+//   - After performing the above requirements, double the size
+//     of the existing rectangle and repeat the calculations
+//   - Print the new results to the terminal
+//
+// --Notes:
+// * The area of a rectangle is length*width
+// * The perimeter of a rectangle is the sum of the lengths of all sides
+package main
 
 type Rectangle struct {
 	lengthX int
@@ -28,8 +28,9 @@ func getRectPeremeter(lengthX, widthX int) int {
 }
 
 // area of rectangle
-func getRectArea(lengthX, widthX int) int {
-	return lengthX * widthX
+func getRectArea(lengthX, widthX int) (resultData int) {
+	resultData = lengthX * widthX
+	return
 }
 
 // func main() {
