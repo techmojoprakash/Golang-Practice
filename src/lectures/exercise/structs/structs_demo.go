@@ -24,7 +24,14 @@ type bus struct {
 // then structure is passed and nameval will be updated as per logic
 
 func (person *Passenger) changeName(nameval string) {
-	person.name = nameval
+	// Pointer to a Struct in Golang
+	// using a pointer but here
+	// we are not using dereferencing explicitly
+	// person.name = nameval
+
+	// another way , dereferencing explicitly
+	(*person).name = nameval
+
 	fmt.Println("changeName", person.name)
 }
 
@@ -65,7 +72,7 @@ func main() {
 	// srikanth.name = "Srikanth A"
 
 	// method - 1
-	anurag.changeName("Srikanth A")
+	srikanth.changeName("Srikanth A")
 	// method-2
 	// we should pass reference ex: &srikanth, &chandu
 	// starts with & symbol

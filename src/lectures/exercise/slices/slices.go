@@ -14,13 +14,24 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 // type Part string
 
 func main() {
-	MySlice := []string{"tom", "cat", "rat", "fat", "sweety"}
+	MySlice := []string{"tom", "cat", "rat", "fat", "sweet"}
 	MySlice = append(MySlice, "meow")
 	fmt.Println(MySlice)
 	fmt.Println(MySlice[2])
+
+	// sort slice
+	sort.Strings(MySlice)
+	fmt.Println("MySlice ", MySlice)
+
+	// check sorted ?
+	fmt.Println("is sorted := ", sort.StringsAreSorted(MySlice))
+
 }
