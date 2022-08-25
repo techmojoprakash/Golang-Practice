@@ -12,6 +12,34 @@ type bus struct {
 	FrontPassenger Passenger
 }
 
+// method-1
+// related to pointers concept
+// we are not passing struct in parameters
+// person is variable
+// *Passenger is pointer
+// this model is golang specific
+// you can call this from all Pasenger structures
+// for example chandu is one passenger structure then
+// chandu.changeName() you should call in this way
+// then structure is passed and nameval will be updated as per logic
+
+func (person *Passenger) changeName(nameval string) {
+	person.name = nameval
+	fmt.Println("changeName", person.name)
+}
+
+// //method-2
+// related to pointers concept
+// // we are passing struct in parameters
+// person is variable
+// *Passenger is pointer
+// this model is general like python, java
+
+// func changeName(person *Passenger, nameval string) {
+// 	person.name = nameval
+// 	fmt.Println("changeName", person.name)
+// }
+
 func main() {
 	fmt.Println("Welcome to bus program")
 	p1 := Passenger{"vinay", 12345, true}
@@ -34,8 +62,16 @@ func main() {
 	anurag.ticketNum = 45632
 	fmt.Println("Anurag ticket number is : ", anurag.ticketNum)
 
-	srikanth.name = "Srikanth A"
-	fmt.Println("Anurag new name is : ", srikanth.name)
+	// srikanth.name = "Srikanth A"
+
+	// method - 1
+	anurag.changeName("Srikanth A")
+	// method-2
+	// we should pass reference ex: &srikanth, &chandu
+	// starts with & symbol
+	// changeName(&srikanth, "Srikanth A")
+
+	fmt.Println("srikanth new name is : ", srikanth.name)
 
 	// board one passenger
 	srikanth.boarded = true
