@@ -29,6 +29,46 @@ const (
 	Retired     = 3
 )
 
+func getAllServersDetails(serverMap map[string]int) {
+	fmt.Printf("total number of servers in serverMap is %v \n", len(serverMap))
+	for key, value := range serverMap {
+		fmt.Printf("server name is %v and status is %v \n", key, value)
+	}
+}
+
+func changeServerStatus(serverMap map[string]int, singleserver string, status int) {
+	serverMap[singleserver] = status
+
+}
+
 func main() {
-	servers := []string{"darkstar", "aiur", "omicron", "w359", "baseline"}
+	servers := []string{"tcs", "wipro", "adani", "paytm", "amazon"}
+
+	//* Create a map using the server names as the key and the server status
+	//  as the value
+	//* Set all of the server statuses to `Online` when creating the map
+	serverMap := make(map[string]int)
+	serverMap[servers[0]] = Online
+	serverMap[servers[1]] = Online
+	serverMap[servers[2]] = Online
+	serverMap[servers[3]] = Online
+
+	fmt.Printf("server type is %T \n", serverMap)
+
+	// call display server info function
+	getAllServersDetails(serverMap)
+	// change server status
+	changeServerStatus(serverMap, servers[2], Offline)
+	// change server status
+	changeServerStatus(serverMap, servers[3], Retired)
+	// call display server info function
+	getAllServersDetails(serverMap)
+	//  - change server status of all servers to `Maintenance`
+	changeServerStatus(serverMap, servers[0], Maintenance)
+	changeServerStatus(serverMap, servers[1], Maintenance)
+	changeServerStatus(serverMap, servers[2], Maintenance)
+	changeServerStatus(serverMap, servers[3], Maintenance)
+
+	// call display server info function
+	getAllServersDetails(serverMap)
 }
