@@ -39,7 +39,7 @@ type EachBookLog struct {
 
 func BookCheckOut(mylib *Library, eachbklog *EachBookLog, bkName string, stdName string) {
 	// checking book availability in Library
-	if mylib.books[bkName] == true {
+	if mylib.books[bkName] {
 		// making book unavailable
 		mylib.books[bkName] = false
 		fmt.Println("book making unavailable done : ", mylib.books[bkName])
@@ -91,6 +91,8 @@ func main() {
 	TMLib.books["Deloit Book"] = true
 	TMLib.books["Adani Book"] = true
 	fmt.Println("TMLib.books ", TMLib.books)
+
+	fmt.Println("Current Library \n", TMLib)
 
 	// eachbklog := EachBookLog("TCS Book", "Jai", "checkout", getTime())
 	// book checkout
