@@ -24,89 +24,83 @@ import (
 	"time"
 )
 
-//	type Book struct {
-//		nameOfBook string
-//	}
-type TMLibrary struct {
-	book          string
-	nameOfStudent string
-	// BookLog map
-	// timeOfCheckout time.Time
-	// timeOfReturned time.Time
+type Library struct {
+	student []string
+	books   map[string]bool
+	booklog []EachBookLog
 }
 
-func BookCheckoutFromLibrary(BookLibrary map[string]bool, bookName string, BookLog map[time.Time]string, studentNameVal string) {
-	if BookLibrary[bookName] {
-		BookLibrary[bookName] = false
-		logItem := [2]string{bookName, studentNameVal}
-		BookLog[time.Now()] = logItem
-		// StudentLibrary
-		fmt.Println(bookName, " Book Checkout successfully From Library")
+type EachBookLog struct {
+	bookName       string
+	studentName    string
+	checkOutReturn string //checkout or return
+	time           string
+}
+
+func BookCheckOut(mylib *Library, eachbklog *EachBookLog, bkName string, stdName string) {
+	// checking book availability in Library
+	if mylib.books[bkName] == true {
+		// making book unavailable
+		mylib.books[bkName] = false
+		fmt.Println("book making unavailable done : ", mylib.books[bkName])
+		// creating eachbook struct with all fields
+		eachbklog.bookName = bkName
+		eachbklog.checkOutReturn = "checkout"
+		eachbklog.studentName = stdName
+		eachbklog.time = time.Now().String()
+		fmt.Println("creating eachbook struct with all fields done : ", eachbklog)
+
+		// pushing eachbook struct to booklog slice
+		mylib.booklog = append(mylib.booklog, *eachbklog)
+		fmt.Println("pushing eachbook struct to booklog slice done : ", mylib.booklog)
 	} else {
-		fmt.Printf("Sorry! %v is not available", bookName)
+		fmt.Println("Sorry Book is not available")
 	}
-
 }
 
-func BookReturnToLibrary(BookLibrary map[string]bool, bookName string, BookLog map[time.Time]string) {
-	BookLibrary[bookName] = true
-	BookLog[time.Now()] = bookName
-	fmt.Println(bookName, "Returned successfully To Library")
+func BookReturn(mylib *Library, eachbklog *EachBookLog, bkName string, stdName string) {
+	// making book unavailable
+	mylib.books[bkName] = true
+	fmt.Println("book making available done : ", mylib.books[bkName])
+	// creating eachbook struct with all fields
+	eachbklog.bookName = bkName
+	eachbklog.checkOutReturn = "return"
+	eachbklog.studentName = stdName
+	eachbklog.time = time.Now().String()
+	fmt.Println("creating eachbook struct with all fields done : ", eachbklog)
 
-}
-
-// adding book to BookLibrary
-func AddBook2Library(BookLibrary map[string]bool, bookName string) {
-	BookLibrary[bookName] = true
-	fmt.Println(bookName, "added successfully To Library")
-
-}
-
-func AddStudent2Library(StudentLibrary map[string]string, icard string, studentName string) {
-	StudentLibrary[icard] = studentName
-	fmt.Println(studentName, "added successfully To StudentLibrary")
+	// pushing eachbook struct to booklog slice
+	mylib.booklog = append(mylib.booklog, *eachbklog)
+	fmt.Println("pushing eachbook struct to booklog slice done : ", mylib.booklog)
 
 }
 
 func main() {
+	var TMLib Library
+	var eachbkLog EachBookLog
 
-	// maintain maps to store books uniquely
-	BookLibrary := make(map[string]bool)
-	StudentLibrary := make(map[string]string)
-	BookLog := make(map[time.Time][2]string)
-	// adding book to BookLibrary
-	AddBook2Library(BookLibrary, "TCS Book")
-	AddBook2Library(BookLibrary, "CISCO Book")
-	AddBook2Library(BookLibrary, "TM Book")
-	AddBook2Library(BookLibrary, "APPLE Book")
-	AddBook2Library(BookLibrary, "DELL Book")
+	// adding students to library
+	TMLib.student = append(TMLib.student, "Jai", "Kim", "Sai", "Siva", "Suhas")
+	fmt.Println("TMLib.student ", TMLib.student)
 
-	// adding student to student library
-	AddStudent2Library(StudentLibrary, "PR", "Prakash")
-	AddStudent2Library(StudentLibrary, "VI", "Vinay")
-	AddStudent2Library(StudentLibrary, "AR", "Arjun")
-	AddStudent2Library(StudentLibrary, "NA", "Nakul")
-	AddStudent2Library(StudentLibrary, "SA", "Sahadev")
+	TMLib.books = make(map[string]bool)
+	TMLib.books["TCS Book"] = true
+	TMLib.books["Wipro Book"] = true
+	TMLib.books["Apple Book"] = true
+	TMLib.books["DELL Book"] = true
+	TMLib.books["Deloit Book"] = true
+	TMLib.books["Adani Book"] = true
+	fmt.Println("TMLib.books ", TMLib.books)
 
-	fmt.Println("BookLibrary is : ", BookLibrary)
-	fmt.Println("StudentLibrary is : ", StudentLibrary)
-	fmt.Println("BookLog is : ", BookLog)
+	// eachbklog := EachBookLog("TCS Book", "Jai", "checkout", getTime())
+	// book checkout
+	// params - bookLibrary, EachBookLog, bookname, studentName
+	BookCheckOut(&TMLib, &eachbkLog, "TCS Book", TMLib.student[0])
+	BookCheckOut(&TMLib, &eachbkLog, "TCS Book", TMLib.student[1])
+	fmt.Println("Current Library \n", TMLib)
+	fmt.Println("-----------------------------------------")
+	BookReturn(&TMLib, &eachbkLog, "TCS Book", TMLib.student[0])
 
-	// take book from library and maintain log
-	BookCheckoutFromLibrary(BookLibrary, "DELL Book", BookLog, StudentLibrary["VI"])
-	fmt.Println("Current BookLog is : ", BookLog)
-	time.Sleep(2 * time.Second)
-	BookCheckoutFromLibrary(BookLibrary, "TM Book", BookLog)
+	fmt.Println("Current Library \n", TMLib)
 
-	fmt.Println("Current BookLog is : ", BookLog)
-
-	// return book to library and maintain log
-	BookReturnToLibrary(BookLibrary, "DELL Book", BookLog)
-
-	// fmt.Println("Current BookLibrary is : ", BookLibrary)
-	// fmt.Println("Current StudentLibrary is : ", StudentLibrary)
-	fmt.Println("Current BookLog is : ", BookLog)
-
-	fmt.Println("final BookLibrary is : ", BookLibrary)
-	fmt.Println("final StudentLibrary is : ", StudentLibrary)
 }
