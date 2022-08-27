@@ -85,4 +85,11 @@ func main() {
 	myBus = bus{srikanth}
 	fmt.Println("Front Passenger name is : ", myBus.FrontPassenger.name)
 
+	// Printf vs Println in structs
+	// printf : %+v : will print variable name with values
+	// println : will print values only
+
+	fmt.Println("srikanth=> ", srikanth)
+	fmt.Printf("srikanth=> %+v ", srikanth)
+
 }
