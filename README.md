@@ -13,7 +13,7 @@ The `solutions` branch also includes the code seen in the demos.
 
 ## Pixl
 To work on the Pixl project, open the `projects/pixl` directory in your IDE.
-You can then execute `go run ./pixl` to run the project.
+You can then execute `go run ./pixl` to run the project
 
 ### Pixl Prerequisites
 The Pixl project requires a working installation of `gcc`.
