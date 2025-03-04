@@ -1,0 +1,39 @@
+Multi Channel Comm - One to Many
+Releasing eachSheet to Central Board, Index : 0 , Sheet Data : 901 and Branch MECH 
+GetECEMarks func Started....!
+GetMECHMarks func Started....!
+Sending 2 MECH Channel id is 901
+Releasing eachSheet to Central Board, Index : 1 , Sheet Data : 902 and Branch MECH 
+Sending 2 MECH Channel id is 902
+we received the MECH marks sheet {901 MECH 67}
+we received the MECH marks sheet {902 MECH 93}
+Releasing eachSheet to Central Board, Index : 2 , Sheet Data : 903 and Branch MECH 
+Sending 2 MECH Channel id is 903
+Releasing eachSheet to Central Board, Index : 3 , Sheet Data : 904 and Branch MECH 
+Sending 2 MECH Channel id is 904
+we received the MECH marks sheet {903 MECH 47}
+we received the MECH marks sheet {904 MECH 71}
+Releasing eachSheet to Central Board, Index : 4 , Sheet Data : 905 and Branch MECH 
+Sending 2 MECH Channel id is 905
+Releasing eachSheet to Central Board, Index : 5 , Sheet Data : 501 and Branch ECE 
+Sending 2 ECE Channel id is 501
+Releasing eachSheet to Central Board, Index : 6 , Sheet Data : 502 and Branch ECE 
+Sending 2 ECE Channel id is 502
+we received the ECE marks sheet {501 ECE 28}
+we received the MECH marks sheet {905 MECH 90}
+we received the ECE marks sheet {502 ECE 81}
+Releasing eachSheet to Central Board, Index : 7 , Sheet Data : 503 and Branch ECE 
+Sending 2 ECE Channel id is 503
+Releasing eachSheet to Central Board, Index : 8 , Sheet Data : 504 and Branch ECE 
+Sending 2 ECE Channel id is 504
+we received the ECE marks sheet {503 ECE 48}
+we received the ECE marks sheet {504 ECE 62}
+Releasing eachSheet to Central Board, Index : 9 , Sheet Data : 505 and Branch ECE 
+Sending 2 ECE Channel id is 505
+Releasing eachSheet to Central Board, Index : 10 , Sheet Data : 506 and Branch ECE 
+Sending 2 ECE Channel id is 506
+we received the ECE marks sheet {505 ECE 99}
+we received the ECE marks sheet {506 ECE 10}
+ECE Channel is closed...
+MECH Channel is closed...
+DONE with Main func.....!
